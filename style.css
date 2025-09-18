@@ -13,6 +13,16 @@ h1 {
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* Heading 2 */
+h2 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Heading 3 */
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
 /* Paragraph */
 p {
     font-family: 'Ubuntu', sans-serif;
@@ -21,6 +31,10 @@ p {
 ul {
     list-style-type: none;
     padding: 0;
+}
+
+li {
+    font-family: 'Ubuntu', sans-serif;
 }
 
 li a {
