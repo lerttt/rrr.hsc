@@ -11,7 +11,7 @@
 
 /* Global & Body Styling */
 body {
-    margin: 0;
+    margin: 20px;
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
     background-color: #f4f4f4;
@@ -46,6 +46,7 @@ body {
   color: #fff;
   display: flex;
   align-items: center;
+  white-space: nowrap; /* Prevents the title from wrapping to a new line */
 }
 
 .site-title .icon {
@@ -66,6 +67,7 @@ body {
   padding: 8px 12px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevents button text from wrapping */
 }
 
 .site-nav .page-link:hover {
