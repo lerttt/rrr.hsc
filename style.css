@@ -57,28 +57,21 @@ body {
   font-size: 1.25rem;
 }
 
-.site-nav .menu {
-  display: flex;
-  gap: 15px;
-}
-
-.site-nav .page-link {
+/* Button Styling */
+.back-button {
+  background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
-  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
   font-size: 1rem;
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
-  white-space: nowrap; /* Prevents button text from wrapping */
 }
 
-.site-nav .page-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.nav-toggle, .nav-toggle-label {
-  display: none;
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Main Content Styling */
@@ -130,82 +123,3 @@ li a {
 li a:hover {
   color: #0056b3;
 }
-/* Responsive Styling for mobile menu */
-@media (max-width: 768px) {
-  .site-nav .menu {
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: none;
-    z-index: 100;
-  }
-
-  .site-nav .page-link {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .nav-toggle-label {
-    display: block;
-    cursor: pointer;
-    position: relative;
-    width: 25px;
-    height: 20px;
-    z-index: 101;
-  }
-  
-  .nav-toggle-label .nav-toggle-icon,
-  .nav-toggle-label .nav-toggle-icon::before,
-  .nav-toggle-label .nav-toggle-icon::after {
-    display: block;
-    position: absolute;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 3px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .nav-toggle-label .nav-toggle-icon {
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-  }
-
-  .nav-toggle-label .nav-toggle-icon::before,
-  .nav-toggle-label .nav-toggle-icon::after {
-    content: '';
-    width: 100%;
-  }
-  
-  .nav-toggle-label .nav-toggle-icon::before {
-    top: -8px;
-  }
-  
-  .nav-toggle-label .nav-toggle-icon::after {
-    top: 8px;
-  }
-
-  .nav-toggle:checked + .nav-toggle-label .nav-toggle-icon {
-    transform: rotate(45deg);
-  }
-  
-  .nav-toggle:checked + .nav-toggle-label .nav-toggle-icon::before {
-    top: 0;
-    transform: rotate(90deg);
-    opacity: 0;
-  }
-  
-  .nav-toggle:checked + .nav-toggle-label .nav-toggle-icon::after {
-    top: 0;
-    transform: rotate(-90deg);
-  }
-
-  .nav-toggle:checked ~ .menu {
-    display: flex;
-  }
-}
-
