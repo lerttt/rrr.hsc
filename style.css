@@ -25,23 +25,6 @@ body {
   padding: 0 20px;
 }
 
-/* Header & Navigation Styling */
-.site-header {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 1rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.site-header .wrapper {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .site-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -55,23 +38,6 @@ body {
 .site-title .icon {
   margin-right: 8px;
   font-size: 1.25rem;
-}
-
-/* Button Styling */
-.back-button {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Main Content Styling */
