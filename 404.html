@@ -5,27 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        #message {
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-    </style>
+    <script>
+        // Redirect to the homepage with a URL parameter
+        window.location.href = '/?redirected=true';
+    </script>
 </head>
 <body>
-    <div id="message">
-        <p>This page doesn't exist. You will be redirected to the homepage shortly.</p>
-    </div>
-
-    <script>
-        setTimeout(function() {
-            window.location.href = 'https://hscresources.github.io/s/';
-        }, 3000);
-    </script>
+    <p>Redirecting...</p>
 </body>
 </html>
