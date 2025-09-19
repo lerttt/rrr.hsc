@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - HSC Resources</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Page Not Found</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        #message {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Woops! This page doesn't exist...</h1>
-    <p>We can't find the page you were looking for. It might have been moved or deleted, or the URL was misentered.</p>
-    <p>Click <a href="https://bcs-hsc.github.io/hscresources/">here</a> to return to the homepage.</p>    <sub>Can't flit for shit...</sub>
+    <div id="message">
+        <p>This page doesn't exist. You will be redirected to the homepage shortly.</p>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = 'https://hscresources.github.io/s/';
+        }, 3000);
+    </script>
 </body>
 </html>
