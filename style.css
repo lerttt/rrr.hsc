@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
+/* Basic setup and global styles */
 :root {
   --primary-color: #3f51b5;
   --secondary-color: #f0f0f0;
@@ -9,7 +10,6 @@
   --link-hover-color: #303f9f;
 }
 
-/* Global & Body Styling */
 body {
     margin: 20px;
     padding: 0;
@@ -23,21 +23,6 @@ body {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.site-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  white-space: nowrap; /* Prevents the title from wrapping to a new line */
-}
-
-.site-title .icon {
-  margin-right: 8px;
-  font-size: 1.25rem;
 }
 
 /* Main Content Styling */
