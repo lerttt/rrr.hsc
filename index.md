@@ -6,8 +6,8 @@ title: Home
 # RRR HSC Resources</h1>
 This site is a collection of resources for students undertaking Higher School Certificate (HSC) or Preliminary HSC studies. Learn more [here](https://lerttt.github.io/rrr.hsc/about).
 
-### 📑 Resources by Subject
-More subjects will be added or made accessible when requested or when content becomes available. Please be patient in the meantime.
+### 📑 Resources by Subject  
+More subjects will be added or made accessible when requested or when content becomes available. Please be patient in the meantime.  
 🗂️ **English**   
 ↳ 📁 Studies [Currently Unavailable]  
 ↳ 📁 Standard  
