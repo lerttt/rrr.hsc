@@ -14,51 +14,49 @@ More subjects will be added or made accessible when requested or when content be
  ↳ 📁 Advanced [Currently Unavailable]  
  ↳ 📁 Extension 1 & 2 [Currently Unavailable]  
 🗂️ **Math**   
-↳ 📁 Numeracy [Currently Unavailable]  
-↳ 📁 Standard 1 [Currently Unavailable]   
-↳ 📁 Standard 2 [Currently Unavailable]   
-↳ 📁 Advanced  
-↳ 📁 Extension 1 & 2 [Currently Unavailable]  
+ ↳ 📁 Numeracy [Currently Unavailable]  
+ ↳ 📁 Standard 1 [Currently Unavailable]   
+ ↳ 📁 Standard 2 [Currently Unavailable]   
+ ↳ 📁 Advanced  
+ ↳ 📁 Extension 1 & 2 [Currently Unavailable]  
 🗂️ **Sciences**   
-↳ 📁 Chemistry    
-↳ 📁 Biology  
-↳ 📁 Earth & Environmental Science [Currently Unavailable]  
-↳ 📁 Physics [Currently Unavailable]  
-↳ 📁 Science Extension [Currently Unavailable]  
+ ↳ 📁 Chemistry    
+ ↳ 📁 Biology  
+ ↳ 📁 Earth & Environmental Science [Currently Unavailable]  
+ ↳ 📁 Physics [Currently Unavailable]  
+ ↳ 📁 Science Extension [Currently Unavailable]  
 🗂️ **HSIE/Humanities**   
-↳ 📁 Ancient History [Currently Unavailable]  
-↳ 📁 Modern History [Currently Unavailable]   
-↳ 📁 History Extension [Currently Unavailable]   
-↳ 📁 Business Studies [Currently Unavailable]  
-↳ 📁 Legal Studies [Currently Unavailable]  
-↳ 📁 Society & Culture [Currently Unavailable]  
-↳ 📁 Studies of Religion [Currently Unavailable]  
-↳ 📁 Aboriginal Studies [Currently Unavailable]  
+ ↳ 📁 Ancient History [Currently Unavailable]  
+ ↳ 📁 Modern History [Currently Unavailable]   
+ ↳ 📁 History Extension [Currently Unavailable]   
+ ↳ 📁 Business Studies [Currently Unavailable]  
+ ↳ 📁 Legal Studies [Currently Unavailable]  
+ ↳ 📁 Society & Culture [Currently Unavailable]  
+ ↳ 📁 Studies of Religion [Currently Unavailable]  
+ ↳ 📁 Aboriginal Studies [Currently Unavailable]  
 🗂️ **Creative Arts**   
-↳ 📁 Drama [Currently Unavailable]  
-↳ 📁 Visual Arts [Currently Unavailable]   
-↳ 📁 Music 1 [Currently Unavailable]  
-↳ 📁 Music 2 [Currently Unavailable]  
-↳ 📁 Music Extension [Currently Unavailable]   
-↳ 📁 Dance [Currently Unavailable]  
+ ↳ 📁 Drama [Currently Unavailable]  
+ ↳ 📁 Visual Arts [Currently Unavailable]   
+ ↳ 📁 Music 1 [Currently Unavailable]  
+ ↳ 📁 Music 2 [Currently Unavailable]  
+ ↳ 📁 Music Extension [Currently Unavailable]   
+ ↳ 📁 Dance [Currently Unavailable]  
 🗂️ **TAS**   
-↳ 📁 Design & Technology [Currently Unavailable]  
-↳ 📁 Engineering Studies [Currently Unavailable]   
-↳ 📁 Industrial Technology [Currently Unavailable]  
-↳ 📁 Food Technology [Currently Unavailable]  
-↳ 📁 Textiles & Design [Currently Unavailable]  
-↳ 📁 Agriculture [Currently Unavailable]   
+ ↳ 📁 Design & Technology [Currently Unavailable]  
+ ↳ 📁 Engineering Studies [Currently Unavailable]   
+ ↳ 📁 Industrial Technology [Currently Unavailable]  
+ ↳ 📁 Food Technology [Currently Unavailable]  
+ ↳ 📁 Textiles & Design [Currently Unavailable]  
+ ↳ 📁 Agriculture [Currently Unavailable]   
 🗂️ **VET**   
-↳ 📁 Hospitality (Both Cookery & Kitchen Operations and Food & Beverage)  
-↳ 📁 Construction [Currently Unavailable]   
-↳ 📁 Primary Industries [Currently Unavailable]  
-↳ 📁 Retail Services [Currently Unavailable]  
+ ↳ 📁 Hospitality (Both Cookery & Kitchen Operations and Food & Beverage)  
+ ↳ 📁 Construction [Currently Unavailable]   
+ ↳ 📁 Primary Industries [Currently Unavailable]  
+ ↳ 📁 Retail Services [Currently Unavailable]  
 🗂️ **PDHPE**   
-↳ 📁 Personal Development, Health & Physical Education/Health & Movement Sciences  
-↳ 📁 Community & Family Studies [Currently Unavailable]   
-↳ 📁 Sport, Lifestyle & Recreation [Currently Unavailable]  
-↳ 📁 Physics [Currently Unavailable]  
-↳ 📁 Science Extension [Currently Unavailable]  
+ ↳ 📁 Personal Development, Health & Physical Education/Health & Movement Sciences  
+ ↳ 📁 Community & Family Studies [Currently Unavailable]   
+ ↳ 📁 Sport, Lifestyle & Recreation [Currently Unavailable]  
 🗂️ **Languages**   
 Will be added when requested or when content becomes available.
 
