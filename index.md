@@ -9,10 +9,10 @@ This site is a collection of resources for students undertaking Higher School Ce
 ### 📑 Resources by Subject  
 More subjects will be added or made accessible when requested or when content becomes available. Please be patient in the meantime.  
 🗂️ **English**   
-↳ 📁 Studies [Currently Unavailable]  
-↳ 📁 Standard  
-↳ 📁 Advanced [Currently Unavailable]  
-↳ 📁 Extension 1 & 2 [Currently Unavailable]  
+ ↳ 📁 Studies [Currently Unavailable]  
+ ↳ 📁 Standard  
+ ↳ 📁 Advanced [Currently Unavailable]  
+ ↳ 📁 Extension 1 & 2 [Currently Unavailable]  
 🗂️ **Math**   
 ↳ 📁 Numeracy [Currently Unavailable]  
 ↳ 📁 Standard 1 [Currently Unavailable]   
