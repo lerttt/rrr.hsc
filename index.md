@@ -7,11 +7,11 @@ title: Home
 This site is a collection of resources for students undertaking Higher School Certificate (HSC) or Preliminary HSC studies. Learn more [here](https://lerttt.github.io/rrr.hsc/about).
 
 ### 📑 Resources by Subject
-📁 English   
-        📁 Studies [Currently Unavailable]   
-        📁 Standard   
-        📁 Advanced [Currently Unavailable]   
-        📁 Extension 1 & 2 [Currently Unavailable]   
+📁 English
+↳ 📁 Studies [Currently Unavailable]   
+↳ 📁 Standard   
+↳ 📁 Advanced [Currently Unavailable]   
+↳ 📁 Extension 1 & 2 [Currently Unavailable]   
 
 
 <h2>🖥 Non-Subject Specific Sites</h2>
