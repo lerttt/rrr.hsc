@@ -63,22 +63,22 @@ More subjects will be added or made accessible when requested or when content be
 Will be added when requested or when content becomes available.
 
 
-### 🖥 General Resource Sites
-🔗 [Studocu](https://www.studocu.com/en-au/home) - Student-uploaded assignments, exams, notes and more on all subjects
-🔗 [Khan Academy](https://www.khanacademy.org/) - Detailed video lessons and quizzes on many subjects. American oriented, cut simialr content is covered.
-🔗 [NESA Syllabi](https://educationstandards.nsw.edu.au/wps/portal/nesa/11-12/Understanding-the-curriculum/syllabuses-a-z) - Detailed syllabus information for all HSC courses, including CEC and VET courses.
-🔗 [acehsc](https://www.acehsc.net) - Mix of articles and student-uplaoded content. Contains ads.
-🔗 [thsc](https://thsconline.github.io/s/) - Archive of exam papers for Year 9 onwards on a variety of subjects.
+### 🖥 General Resource Sites  
+🔗 [Studocu](https://www.studocu.com/en-au/home) - Student-uploaded assignments, exams, notes and more on all subjects  
+🔗 [Khan Academy](https://www.khanacademy.org/) - Detailed video lessons and quizzes on many subjects. American oriented, cut simialr content is covered.  
+🔗 [NESA Syllabi](https://educationstandards.nsw.edu.au/wps/portal/nesa/11-12/Understanding-the-curriculum/syllabuses-a-z) - Detailed syllabus information for all HSC courses, including CEC and VET courses.  
+🔗 [acehsc](https://www.acehsc.net) - Mix of articles and student-uplaoded content. Contains ads.  
+🔗 [thsc](https://thsconline.github.io/s/) - Archive of exam papers for Year 9 onwards on a variety of subjects.  
 
 
-### 💲 Paid/Subscription/Tutoring Sites
+### 💲 Paid/Subscription/Tutoring Sites  
 
-🔗 [ATAR Notes](https://atarnotes.com/) (Freemium) - Mix of professionally-designed and student-uploaded content on HSC, VCE, QCE and GCSE courses. Offers premium subscription, but not needed to access most content.
-🔗 [Atomi](https://www.getatomi.com/au) (Subscription) - Short videos and quizzes on HSC courses. Can be quite shallow compared to other resources.
-🔗 [EdRolo](https://edrolo.com.au/) (Subscription) - Videos, annotated slideshows and short quizzes on course content.
-🔗 [EasyHSC](https://easyhsc.com.au/) (Store) - Sells detailed resources on HSC courses.
-🔗 [Matrix Education](https://www.matrix.edu.au/) (Tutoring) - Primarily a tutoring site, though offers free outlines and resources on courses.
-🔗 [Art Of Smart](https://artofsmart.com.au/) (Tutoring) - Primarily a tutoring site, though offers free outlines on some courses.
+🔗 [ATAR Notes](https://atarnotes.com/) (Freemium) - Mix of professionally-designed and student-uploaded content on HSC, VCE, QCE and GCSE courses. Offers premium subscription, but not needed to access most content.  
+🔗 [Atomi](https://www.getatomi.com/au) (Subscription) - Short videos and quizzes on HSC courses. Can be quite shallow compared to other resources.  
+🔗 [EdRolo](https://edrolo.com.au/) (Subscription) - Videos, annotated slideshows and short quizzes on course content.  
+🔗 [EasyHSC](https://easyhsc.com.au/) (Store) - Sells detailed resources on HSC courses.  
+🔗 [Matrix Education](https://www.matrix.edu.au/) (Tutoring) - Primarily a tutoring site, though offers free outlines and resources on courses.  
+🔗 [Art Of Smart](https://artofsmart.com.au/) (Tutoring) - Primarily a tutoring site, though offers free outlines on some courses.  
             
 
         
