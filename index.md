@@ -8,10 +8,10 @@ This site is a collection of resources for students undertaking Higher School Ce
 
 ### 📑 Resources by Subject
 📁 English   
-    📁 Studies [Currently Unavailable]   
-    📁 Standard   
-    📁 Advanced [Currently Unavailable]   
-    📁 Extension 1 & 2 [Currently Unavailable]   
+        📁 Studies [Currently Unavailable]   
+        📁 Standard   
+        📁 Advanced [Currently Unavailable]   
+        📁 Extension 1 & 2 [Currently Unavailable]   
 
 
 <h2>🖥 Non-Subject Specific Sites</h2>
