@@ -2,27 +2,17 @@
 layout: default
 title: Home
 ---
-    <h1> RRR HSC Resources</h1>
-    This site is a collection of resources for students undertaking Higher School Certificate (HSC) or Preliminary HSC studies. Learn more [here](https://lerttt.github.io/rrr.hsc/about).
+
+# RRR HSC Resources</h1>
+This site is a collection of resources for students undertaking Higher School Certificate (HSC) or Preliminary HSC studies. Learn more [here](https://lerttt.github.io/rrr.hsc/about).
 
 ### 📑 Resources by Subject
-    <ul>
-  <li>📁 English
-    <ul>
-      <li>📁 Studies [Currently Unavailable]</li>
-      <li><a href="English/Standard.md">📁 Standard</a></li>
-      <li>📁 Advanced [Currently Unavailable]</li>
-      <li>📁 Extension 1 & 2 [Currently Unavailable]</li>
-    </ul>
-  </li>
-  <li><a href="Mathematics/index.html">📁 Mathematics</a></li>
-  <li><a href="Sciences/index.html">📁 Sciences</a></li>
-  <li><a href="Humanities/index.html">📁 Humanities & Social Sciences</a></li>
-  <li><a href="Creative_Arts/index.html">📁 Creative Arts</a></li>
-  <li><a href="TAS/index.html">📁 TAS</a></li>
-  <li><a href="PDHPE/index.html">📁 PDHPE</a></li>
-  <li><a href="Languages/index.html">📁 Languages</a></li>
-</ul>
+    📁 English
+      📁 Studies [Currently Unavailable]
+      📁 Standard
+      📁 Advanced [Currently Unavailable]
+      📁 Extension 1 & 2 [Currently Unavailable]
+
 
 <h2>🖥 Non-Subject Specific Sites</h2>
     <ul>
