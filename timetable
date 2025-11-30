@@ -1,0 +1,538 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Timetable Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            min-height: 100vh;
+        }
+        .grid-cell {
+            cursor: pointer;
+            transition: background-color 0.1s;
+            min-height: 4rem; 
+            border: 1px solid #e5e7eb;
+        }
+        .grid-cell:hover {
+            background-color: #f0f4f8; 
+        }
+        #input-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 320px;
+            background-color: white;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(320px);
+            transition: transform 0.3s ease-in-out;
+            z-index: 100;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        #input-panel.open {
+            transform: translateX(0);
+        }
+        .event-cell {
+            color: white;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4px;
+            overflow: hidden;
+        }
+
+        [contenteditable]:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: -2px;
+            background-color: #fff;
+            padding: 1px 4px; 
+            border-radius: 4px;
+        }
+        [contenteditable]:empty:before {
+            content: attr(placeholder);
+            color: #9ca3af;
+        }
+        
+     
+        .print-mode #input-panel, 
+        .print-mode #print-toggle-button,
+        .print-mode #status-message,
+        .print-mode .add-controls,
+        .print-mode .delete-btn {
+            display: none !important;
+        }
+
+        .print-mode [contenteditable] {
+            pointer-events: none !important;
+            user-select: none !important;
+            cursor: default !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        
+        .print-mode #exit-print-mode-button {
+            display: flex !important;
+        }
+
+        .print-mode .grid-cell {
+            cursor: default !important;
+        }
+        .print-mode .grid-cell:hover {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+        .print-mode .grid-cell.bg-white {
+            color: transparent !important; 
+        }
+
+        @media print {
+            #input-panel, 
+            #print-toggle-button,
+            #status-message,
+            #exit-print-mode-button,
+            .add-controls,
+            .delete-btn {
+                display: none !important;
+            }
+            body {
+                background-color: white !important;
+                padding: 0 !important; 
+            }
+            .max-w-7xl {
+                max-width: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-8 bg-gray-50">
+    <button onclick="togglePrintMode()" id="exit-print-mode-button" class="hidden fixed bottom-4 right-4 z-50 px-4 py-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 transition duration-150 flex items-center gap-1 text-sm font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.42 1.42-3.15 3.15-1.42-1.42 3.15-3.15zm-4.71 4.71L10.5 12.5v1.5h1.5l2.42-2.42-1.42-1.42zM12 2.25c-5.187 0-9.407 4.195-9.675 9.356C2.083 14.86 3.1 17 4.975 18.825a1.728 1.728 0 0 0 1.25.5 1.728 1.728 0 0 0 1.25-.5C9.333 17 10.355 14.86 10.575 12.606 10.843 7.455 15.063 2.25 20.25 2.25h-8.25Z" />
+        </svg>
+        Exit Print Mode
+    </button>
+
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-6 pb-4 border-b flex justify-between items-start">
+            <div>
+                <h1 class="text-3xl font-extrabold text-gray-800">My Personal Timetable Planner</h1>
+                <p id="status-message" class="text-sm text-gray-500">Data saved locally on this browser. Click any box to add a subject.</p>
+            </div>
+            
+            <div class="flex space-x-3">
+                <button onclick="togglePrintMode()" id="print-toggle-button" class="mt-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg shadow hover:bg-gray-300 transition duration-150 flex items-center gap-2 text-sm font-medium whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.06c-.458 0-.898.172-1.218.473a1.693 1.693 0 0 0-.582 1.216V17.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5v-2.75a1.693 1.693 0 0 0-.582-1.216 1.693 1.693 0 0 0-1.218-.473h-7.5ZM12 4.5v9m0 0 2-2m-2 2-2-2m-2-1.5a4.5 4.5 0 0 1 4.5-4.5h5.25a4.5 4.5 0 0 1 4.5 4.5v0a4.5 4.5 0 0 1-4.5 4.5h-5.25a4.5 4.5 0 0 1-4.5-4.5v0Z" />
+                    </svg>
+                    Print Mode
+                </button>
+            </div>
+        </header>
+
+        <div id="timetable-grid" class="grid grid-cols-[minmax(120px,_0.7fr)_repeat(5,_1fr)] gap-0 border-collapse border border-gray-200 rounded-lg overflow-hidden shadow-xl bg-white">
+        </div>
+
+        <div class="add-controls flex justify-between mt-4">
+            <button onclick="addPeriod()" class="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition text-sm font-medium flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                + Period (Row)
+            </button>
+            <button onclick="addDay()" class="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition text-sm font-medium flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                + Day (Column)
+            </button>
+        </div>
+    </div>
+
+    <div id="input-panel">
+        <div class="flex justify-between items-center border-b pb-4 mb-4">
+            <h2 id="panel-title" class="text-xl font-bold text-gray-800">Event Details</h2>
+            <button onclick="closeInputPanel()" class="text-gray-500 hover:text-gray-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="event-edit-content" class="tab-content">
+            <form onsubmit="event.preventDefault(); handleSave();" class="space-y-4">
+                <div>
+                    <label for="subject-input" class="block text-sm font-medium text-gray-700 mb-1">Subject / Event</label>
+                    <input type="text" id="subject-input" required placeholder="e.g. Legal Studies, Defensive Charms" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <div>
+                    <label for="location-input" class="block text-sm font-medium text-gray-700 mb-1">Location / Classroom</label>
+                    <input type="text" id="location-input" placeholder="e.g. Room 402, Fire Shed 1" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label for="teacher-input" class="block text-sm font-medium text-gray-700 mb-1">Teacher / Instructor</label>
+                    <input type="text" id="teacher-input" placeholder="e.g. Ms. Williams, Capt. Johnson" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label for="color-input" class="block text-sm font-medium text-gray-700 mb-1">Color Code</label>
+                    <input type="color" id="color-input" class="w-full h-10 p-1 border border-gray-300 rounded-lg cursor-pointer">
+                </div>
+
+                <div class="flex justify-between pt-6">
+                    <button type="button" onclick="handleDelete()" id="delete-button" class="hidden text-sm font-medium text-red-600 hover:text-red-900 transition p-2">
+                        Delete Event
+                    </button>
+                    <button type="submit" class="flex-1 ml-4 py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const LOCAL_STORAGE_KEY_DATA = 'timetable_planner_data';
+        const LOCAL_STORAGE_KEY_CONFIG = 'timetable_config';
+        
+        const DEFAULT_CONFIG = {
+            periods: [
+                { id: 'roll', name: 'Roll Call', time: '08:30 - 08:45' },
+                { id: 'p1', name: 'Period 1', time: '08:45 - 09:45' },
+                { id: 'p2', name: 'Period 2', time: '09:45 - 10:45' },
+                { id: 'recess', name: 'Recess', time: '10:45 - 11:15' },
+                { id: 'p3', name: 'Period 3', time: '11:15 - 12:15' },
+                { id: 'lunch', name: 'Lunch', time: '12:15 - 12:45' },
+                { id: 'p4', name: 'Period 4', time: '12:45 - 13:45' },
+                { id: 'p5', name: 'Period 5', time: '13:45 - 14:45' },
+                { id: 'sport', name: 'Sport/Duty', time: '14:45 - 15:30' },
+            ],
+            days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        };
+
+        let timetableData = {}; 
+        let timetableConfig = {};
+        let activeCellId = null;
+
+
+        function loadConfig() {
+            try {
+                const storedConfig = localStorage.getItem(LOCAL_STORAGE_KEY_CONFIG);
+                timetableConfig = storedConfig ? JSON.parse(storedConfig) : DEFAULT_CONFIG;
+                // Ensure periods have unique IDs for mapping, if not present (legacy data)
+                timetableConfig.periods.forEach(p => {
+                    if (!p.id) p.id = generateUniqueId('p');
+                });
+                saveConfig(); 
+                console.log("Config loaded.");
+            } catch (e) {
+                console.error("Could not load config from localStorage:", e);
+                timetableConfig = DEFAULT_CONFIG;
+            }
+        }
+
+        function saveConfig() {
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY_CONFIG, JSON.stringify(timetableConfig));
+                console.log("Config saved.");
+            } catch (e) {
+                console.error("Could not save config to localStorage:", e);
+            }
+        }
+
+        function loadTimetable() {
+            try {
+                const storedData = localStorage.getItem(LOCAL_STORAGE_KEY_DATA);
+                timetableData = storedData ? JSON.parse(storedData) : {};
+                console.log("Timetable data loaded.");
+            } catch (e) {
+                console.error("Could not load data from localStorage:", e);
+                timetableData = {};
+            }
+        }
+        
+        function saveTimetable() {
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY_DATA, JSON.stringify(timetableData));
+                console.log("Timetable saved.");
+            } catch (e) {
+                console.error("Could not save data to localStorage:", e);
+            }
+        }
+
+        function generateUniqueId(prefix) {
+            return prefix + Math.random().toString(36).substring(2, 9);
+        }
+
+
+        function renderTimetable() {
+            const container = document.getElementById('timetable-grid');
+            container.innerHTML = '';
+            
+            const days = timetableConfig.days;
+            const periods = timetableConfig.periods;
+            
+            const isPrintMode = document.body.classList.contains('print-mode');
+
+            container.style.gridTemplateColumns = `minmax(120px, 0.7fr) repeat(${days.length}, 1fr)`;
+
+            const headerRow = document.createElement('div');
+            headerRow.className = 'contents';
+            headerRow.innerHTML = `<div class="p-3 font-semibold bg-gray-100 sticky top-0 z-10">Time</div>` +
+                                    days.map((day, index) => 
+                                        `<div class="p-3 text-center font-bold bg-gray-100 sticky top-0 z-10 flex items-center justify-center relative group">
+                                            <div 
+                                                class="flex-grow w-full text-center p-1"
+                                                contenteditable="${!isPrintMode}"
+                                                placeholder="Day Name"
+                                                onkeydown="if(event.key === 'Enter') { event.preventDefault(); this.blur(); }"
+                                                onblur="handleHeaderUpdate('day', ${index}, this.textContent.trim())"
+                                            >${day}</div>
+                                            <!-- Delete button for day -->
+                                            <button 
+                                                onclick="removeDay(${index})" 
+                                                class="delete-btn absolute right-1 top-1 text-red-500 hover:text-red-700 transition opacity-0 group-hover:opacity-100 p-1 rounded-full text-lg leading-none"
+                                                title="Remove Day"
+                                                aria-label="Remove Day"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>`
+                                    ).join('');
+            container.appendChild(headerRow);
+
+            periods.forEach((period, index) => {
+                const timeCell = document.createElement('div');
+                timeCell.className = 'p-3 text-sm font-medium bg-white border-r border-gray-200 group relative';
+                
+                timeCell.innerHTML = `
+                    <div 
+                        contenteditable="${!isPrintMode}" 
+                        class="period-name-editor font-medium truncate p-1 -m-1"
+                        placeholder="Period Name"
+                        onkeydown="if(event.key === 'Enter') { event.preventDefault(); this.blur(); }"
+                        onblur="handleHeaderUpdate('periodName', ${index}, this.textContent.trim())"
+                    >${period.name}</div>
+                    <div 
+                        contenteditable="${!isPrintMode}" 
+                        class="text-xs text-gray-500 period-time-editor truncate p-1 -m-1"
+                        placeholder="00:00 - 00:00"
+                        onkeydown="if(event.key === 'Enter') { event.preventDefault(); this.blur(); }"
+                        onblur="handleHeaderUpdate('periodTime', ${index}, this.textContent.trim())"
+                    >${period.time}</div>
+                    <!-- Delete button for period -->
+                    <button 
+                        onclick="removePeriod(${index})" 
+                        class="delete-btn absolute right-1 top-1 text-red-500 hover:text-red-700 transition opacity-0 group-hover:opacity-100 p-1 rounded-full text-lg leading-none"
+                        title="Remove Period"
+                        aria-label="Remove Period"
+                    >
+                        &times;
+                    </button>
+                `;
+                container.appendChild(timeCell);
+
+                days.forEach(day => {
+                    const cellId = `${day}-${period.id}`;
+                    const event = timetableData[cellId];
+                    
+                    const cell = document.createElement('div');
+                    cell.id = cellId;
+                    cell.className = `grid-cell hover:shadow-lg transition-shadow duration-300`;
+                    
+                    if (event && event.subject) {
+                        const bgColor = event.color || '#4b5563';
+                        cell.style.backgroundColor = bgColor;
+                        cell.style.borderColor = bgColor;
+                        
+                        cell.innerHTML = `
+                            <div class="event-cell">
+                                <span class="text-base truncate">${event.subject}</span>
+                                ${event.location ? `<span class="text-xs font-normal opacity-90 truncate">@ ${event.location}</span>` : ''}
+                                ${event.teacher ? `<span class="text-xs font-light opacity-80 truncate">${event.teacher}</span>` : ''}
+                            </div>
+                        `;
+                    } else {
+                        cell.className += ' bg-white text-gray-400 flex items-center justify-center';
+                        cell.textContent = '+';
+                    }
+
+                    cell.onclick = () => openEventEditPanel(cellId, day, period.name);
+
+                    container.appendChild(cell);
+                });
+            });
+        }
+
+
+        window.closeInputPanel = () => {
+            document.getElementById('input-panel').classList.remove('open');
+            activeCellId = null;
+        };
+
+        window.openEventEditPanel = (cellId, day, periodName) => {
+            if (document.body.classList.contains('print-mode')) return;
+
+            activeCellId = cellId;
+            const event = timetableData[cellId] || {};
+
+            document.getElementById('panel-title').textContent = `${day}, ${periodName}`;
+
+            document.getElementById('subject-input').value = event.subject || '';
+            document.getElementById('location-input').value = event.location || '';
+            document.getElementById('teacher-input').value = event.teacher || '';
+            document.getElementById('color-input').value = event.color || '#3b82f6'; // Default color blue
+
+            document.getElementById('delete-button').classList.toggle('hidden', !event.subject);
+
+            document.getElementById('input-panel').classList.add('open');
+        };
+
+        window.handleSave = () => {
+            if (!activeCellId) return;
+
+            const subject = document.getElementById('subject-input').value.trim();
+            const location = document.getElementById('location-input').value.trim();
+            const teacher = document.getElementById('teacher-input').value.trim();
+            const color = document.getElementById('color-input').value;
+
+            if (subject) {
+                timetableData[activeCellId] = {
+                    subject,
+                    location: location || undefined,
+                    teacher: teacher || undefined,
+                    color
+                };
+            } else {
+                delete timetableData[activeCellId];
+            }
+
+            saveTimetable();
+            renderTimetable();
+            closeInputPanel();
+        };
+
+        window.handleDelete = () => {
+            if (!activeCellId || !timetableData[activeCellId]) return;
+            
+            delete timetableData[activeCellId];
+
+            saveTimetable();
+            renderTimetable();
+            closeInputPanel();
+        };
+
+
+        window.handleHeaderUpdate = (type, index, newValue) => {
+            newValue = newValue.trim();
+
+            if (document.body.classList.contains('print-mode')) {
+                renderTimetable(); 
+                return;
+            }
+
+            if (!newValue) {
+                renderTimetable(); 
+                return;
+            }
+
+            if (type === 'day') {
+                const oldValue = timetableConfig.days[index];
+                if (newValue !== oldValue) {
+                    timetableConfig.periods.forEach(period => {
+                        const oldKey = `${oldValue}-${period.id}`;
+                        const newKey = `${newValue}-${period.id}`;
+                        if (timetableData[oldKey]) {
+                            timetableData[newKey] = timetableData[oldKey];
+                            delete timetableData[oldKey];
+                        }
+                    });
+                    timetableConfig.days[index] = newValue;
+                    saveTimetable();
+                }
+            } else if (type === 'periodName') {
+                timetableConfig.periods[index].name = newValue;
+            } else if (type === 'periodTime') {
+                timetableConfig.periods[index].time = newValue;
+            }
+
+            saveConfig();
+            renderTimetable();
+        };
+
+        window.addPeriod = () => {
+            timetableConfig.periods.push({
+                id: generateUniqueId('p'),
+                name: 'New Period',
+                time: 'XX:XX - XX:XX'
+            });
+            saveConfig();
+            renderTimetable();
+        };
+
+        window.removePeriod = (index) => {
+            const periodIdToRemove = timetableConfig.periods[index].id;
+            timetableConfig.days.forEach(day => {
+                delete timetableData[`${day}-${periodIdToRemove}`];
+            });
+
+            timetableConfig.periods.splice(index, 1);
+            
+            saveConfig();
+            saveTimetable();
+            renderTimetable();
+        };
+
+        window.addDay = () => {
+            timetableConfig.days.push('New Day');
+            saveConfig();
+            renderTimetable();
+        };
+
+        window.removeDay = (index) => {
+            const dayToRemove = timetableConfig.days[index];
+            timetableConfig.periods.forEach(period => {
+                delete timetableData[`${dayToRemove}-${period.id}`];
+            });
+            
+            timetableConfig.days.splice(index, 1);
+            
+            saveConfig();
+            saveTimetable();
+            renderTimetable();
+        };
+
+
+        window.togglePrintMode = () => {
+            document.body.classList.toggle('print-mode');
+            const button = document.getElementById('print-toggle-button');
+            
+            if (document.body.classList.contains('print-mode')) {
+                button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.42 1.42-3.15 3.15-1.42-1.42 3.15-3.15zm-4.71 4.71L10.5 12.5v1.5h1.5l2.42-2.42-1.42-1.42zM12 2.25c-5.187 0-9.407 4.195-9.675 9.356C2.083 14.86 3.1 17 4.975 18.825a1.728 1.728 0 0 0 1.25.5 1.728 1.728 0 0 0 1.25-.5C9.333 17 10.355 14.86 10.575 12.606 10.843 7.455 15.063 2.25 20.25 2.25h-8.25Z" />
+                                    </svg>
+                                    Edit Mode`;
+                closeInputPanel();
+            } else {
+                button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.06c-.458 0-.898.172-1.218.473a1.693 1.693 0 0 0-.582 1.216V17.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5v-2.75a1.693 1.693 0 0 0-.582-1.216 1.693 1.693 0 0 0-1.218-.473h-7.5ZM12 4.5v9m0 0 2-2m-2 2-2-2m-2-1.5a4.5 4.5 0 0 1 4.5-4.5h5.25a4.5 4.5 0 0 1 4.5 4.5v0a4.5 4.5 0 0 1-4.5 4.5h-5.25a4.5 4.5 0 0 1-4.5-4.5v0Z" />
+                                    </svg>
+                                    Print Mode`;
+            }
+            renderTimetable();
+        };
+
+
+        window.onload = () => {
+            loadConfig();
+            loadTimetable();
+            renderTimetable();
+        };
+    </script>
+</body>
+</html>
